@@ -11,10 +11,6 @@ export default defineConfig({
             ssr: 'resources/js/ssr.ts',
             refresh: true,
         }),
-        tailwindcss(),
-        wayfinder({
-            formVariants: true,
-        }),
         vue({
             template: {
                 transformAssetUrls: {
@@ -22,6 +18,10 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
+        }),
+        tailwindcss(),
+        wayfinder({
+            formVariants: true,
         }),
     ],
 });
