@@ -37,3 +37,11 @@ export interface User {
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;
+
+export interface ActionsItem {
+    icon?: any;
+    label: string;
+    onClick: () => void;
+}
+
+export type ActionsItemType = ActionsItem;

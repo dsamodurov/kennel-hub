@@ -2,6 +2,8 @@
 
 @import 'tw-animate-css';
 
+@import 'vditor/dist/index.css';
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
@@ -86,6 +88,81 @@
             'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
             'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
             'Noto Color Emoji';
+    }
+}
+
+@layer utilities {
+    .vditor {
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background-color: var(--background);
+    }
+
+    .vditor:focus-within {
+        border-color: var(--ring);
+        box-shadow: 0 0 0 3px color-mix(in hsl, var(--ring) 35%, transparent);
+    }
+
+    .dark .vditor {
+        --border-color: var(--border);
+        --second-color: color-mix(in hsl, var(--muted-foreground) 40%, transparent);
+        --panel-background-color: var(--input);
+        --toolbar-background-color: var(--background);
+        --toolbar-icon-color: var(--muted-foreground);
+        --toolbar-icon-hover-color: var(--foreground);
+        --textarea-background-color: var(--input);
+        --textarea-text-color: var(--foreground);
+        --heading-border-color: var(--border);
+        --blockquote-color: var(--muted-foreground);
+        --ir-heading-color: var(--foreground);
+        --ir-title-color: var(--muted-foreground);
+        --ir-bi-color: var(--foreground);
+        --ir-link-color: var(--primary);
+        --ir-bracket-color: var(--muted-foreground);
+        --ir-paren-color: var(--muted-foreground);
+        background-color: color-mix(in hsl, var(--input) 30%, transparent) !important;
+        border-color: var(--border) !important;
+    }
+
+    .dark .vditor-content,
+    .dark .vditor-reset {
+        background-color: transparent !important;
+    }
+
+    .dark .vditor-toolbar {
+        border-color: var(--border) !important;
+    }
+
+    .dark .vditor-toolbar,
+    .dark .vditor-toolbar__item,
+    .dark .vditor-icon {
+        color: var(--muted-foreground) !important;
+        background-color: transparent !important;
+    }
+
+    .dark .vditor-icon:hover,
+    .dark .vditor-icon--current {
+        color: var(--foreground) !important;
+        background-color: transparent !important;
+    }
+
+    .dark .vditor-reset,
+    .dark .vditor-input,
+    .dark .vditor-ir .vditor-input,
+    .dark .vditor-ir .vditor-reset,
+    .dark .vditor-wysiwyg .vditor-reset,
+    .dark .vditor-sv .vditor-reset {
+        color: var(--foreground) !important;
+        caret-color: var(--foreground) !important;
+    }
+
+    .dark .vditor-reset a {
+        color: var(--primary) !important;
+    }
+
+    .dark .vditor-input::placeholder,
+    .dark .vditor-reset::placeholder {
+        color: var(--muted-foreground) !important;
     }
 }
 

@@ -11,32 +11,53 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+import { dashboard } from '@/routes/admin';
+import { index } from '@/routes/admin/news';
+import { index as mediaIndex } from '@/routes/admin/media';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
+import { FileText, Folder, Images, LayoutGrid, Newspaper } from 'lucide-vue-next';
+import { computed } from 'vue';
+import { useI18n } from '@/i18n';
 import AppLogo from './AppLogo.vue';
 
-const mainNavItems: NavItem[] = [
+const { t } = useI18n();
+
+const mainNavItems = computed<NavItem[]>(() => [
     {
-        title: 'Dashboard',
+        title: t('common.dashboard'),
         href: dashboard(),
         icon: LayoutGrid,
     },
-];
-
-const footerNavItems: NavItem[] = [
     {
-        title: 'Github Repo',
-        href: 'https://github.com/laravel/vue-starter-kit',
+        title: t('common.news'),
+        href: index(),
+        icon: Newspaper,
+    },
+    {
+        title: t('admin.pages.title'),
+        href: '/admin/pages',
+        icon: FileText,
+    },
+    {
+        title: t('common.media'),
+        href: mediaIndex(),
+        icon: Images,
+    },
+]);
+
+const footerNavItems = computed<NavItem[]>(() => [
+    {
+        title: t('nav.githubRepo'),
+        href: 'https://github.com/dsamodurov/kennel-hub',
         icon: Folder,
     },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
-    },
-];
+    // {
+    //     title: t('common.documentation'),
+    //     href: 'https://laravel.com/docs/starter-kits#vue',
+    //     icon: BookOpen,
+    // },
+]);
 </script>
 
 <template>
